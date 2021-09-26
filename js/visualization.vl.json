@@ -36,7 +36,7 @@
             "type": "nominal",
             "title": "State"
           },
-          {"field": "Rainfall (mm)", "type": "quantitative"}
+          {"field": "rainfall", "title": "Rainfall (mm)", "type": "quantitative"}
         ]
       }
     }
