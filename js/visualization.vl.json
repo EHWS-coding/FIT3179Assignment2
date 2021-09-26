@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 500,
+  "title": "Australian States Average Rainfall in 2017 (mm)",
+  "projection": {"type": "equirectangular"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/EHWS-coding/vega_lite/main/data/STE_2016_AUST.json",
+        "format": {"type": "topojson", "feature": "STE_2016_AUST"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.STE_NAME16",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/EHWS-coding/vega_lite/main/data/rainfall_state.csv"
+            },
+            "key": "state",
+            "fields": ["rainfall"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "color": {
+          "field": "rainfall",
+          "type": "quantitative",
+          "legend": {"type": "gradient"}
+        },
+        "tooltip": [
+          {
+            "field": "properties.STE_NAME16",
+            "type": "nominal",
+            "title": "State"
+          },
+          {"field": "Rainfall (mm)", "type": "quantitative"}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
