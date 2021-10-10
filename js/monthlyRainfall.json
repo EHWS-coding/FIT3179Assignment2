@@ -1,0 +1,99 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "height": 500,
+  "width": 500,
+  "title": "Monthly Rainfall in Major Australian Cities (2016)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/EHWS-coding/vega_lite/main/data/monthly%20rainfall.csv"
+  },
+  "layer": [
+    {
+      "selection": {
+        "location_selection": {
+          "type": "multi",
+          "fields": ["Location"],
+          "bind": "legend"
+        }
+      },
+      "mark": "line",
+      "encoding": {
+        "x": {
+          "field": "Month",
+          "type": "quantitative",
+          "title": "Calender Month",
+          "axis": {"tickCount": 12},
+          "scale": {"type": "linear", "domain": [1, 12]}
+        },
+        "y": {
+          "field": "Rainfall",
+          "type": "quantitative",
+          "title": "Monthly Rainfall (mm)",
+          "axis": {"tickCount": 6},
+          "scale": {"type": "linear", "domain": [1, 500]}
+        },
+        "color": {
+          "field": "Location",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Adelaide",
+              "Melbourne",
+              "Sydney",
+              "Darwin",
+              "Brisbane",
+              "Hobart",
+              "Perth"
+            ],
+            "range": [
+              "#504f88",
+              "#55367d",
+              "#487195",
+              "#4fece8",
+              "#3ab3b0",
+              "#320a65",
+              "#4e558a"
+            ]
+          }
+        },
+        "opacity": {
+          "condition": {"selection": "location_selection", "value": 0.8},
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "Location", "type": "nominal"},
+          {"field": "Rainfall", "type": "quantitative", "format": ","},
+          {"field": "Month", "type": "quantitative", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "x": {"field": "Month", "type": "quantitative"},
+        "y": {"field": "Rainfall", "type": "quantitative"},
+        "text": {"field": "Location", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Month'] == 6 && datum['Location'] != 'Perth' || datum['Month'] == 7 && datum['Location'] == 'Perth' ",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Location", "type": "nominal"},
+          {"field": "Rainfall", "type": "quantitative", "format": ","},
+          {"field": "Month", "type": "quantitative", "format": ","}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
