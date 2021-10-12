@@ -31,19 +31,25 @@
 <div id="choropleth_map"></div>
 <p>* Gray areas represent missing data</p>
 
-
-<h3>
-  Monthly Rainfall in Major Cities
-</h3>
-<div id="monthly_rain"></div>
-
-
 <h3>
   Rainfall Patterns over the Years
 </h3>
 <div id="cycle_rain"></div>
+<p>The seasonal nature of rainfall is displayed here in this spiral chart, each layer represents a year and each dot is a month.
+  There is a clear wet and dry season present where there is excess rainfall from March to June and much less rainfall from September to November.
+</p>
 
 <script type="text/javascript">
+
+
+<h3>
+  Monthly Rainfall in Major Cities
+</h3>
+
+<div id="monthly_rain"></div>
+
+<p>This visualisation shows the different seasonal patterns for the major cities in Australia. While Sydney and Brisbane
+  have wet seasons around June, Darwin is the opposite with the most rainfall arriving in December.</p>
 
   vegaEmbed('#choropleth_map', "js/visualization.vl.json").then(function(result) { }).catch(console.error);
   vegaEmbed('#monthly_rain', "js/monthlyRainfall.json").then(function(result) { }).catch(console.error);

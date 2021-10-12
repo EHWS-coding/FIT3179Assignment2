@@ -9,12 +9,29 @@
   "transform": [
     {"filter": "datum.Year >= 2010"},
     {"calculate": "((datum.Year-2008)+datum.Month/12)", "as": "var_dist"},
-    {"calculate": "sin(datum.var_dist*6.28318530718) * (4+datum.var_dist)", "as": "var_x"},
-    {"calculate": "cos(datum.var_dist*6.28318530718) * (4+datum.var_dist)", "as": "var_y"},
-    {"calculate": "sin(datum.Month/12*6.28318530718) * 15+2", "as": "lab_x"},
-    {"calculate": "cos(datum.Month/12*6.28318530718) * 15-1", "as": "lab_y"}
+    {"calculate": "sin(datum.var_dist*6.28318530718) * (2+datum.var_dist)*1.4", "as": "var_x"},
+    {"calculate": "cos(datum.var_dist*6.28318530718) * (2+datum.var_dist)*1.4", "as": "var_y"},
+    {"calculate": "sin(datum.Month/12*6.28318530718) * 17+2", "as": "lab_x"},
+    {"calculate": "cos(datum.Month/12*6.28318530718) * 17-1", "as": "lab_y"}
   ],
   "layer": [
+    {
+      "mark": {"type":"line"},
+      "encoding": {
+        "x": {
+          "field": "var_x",
+          "type": "quantitative",
+          "scale": {"type": "linear", "domain":[-15, 15]}
+        },
+        "y": {
+          "field": "var_y",
+          "type": "quantitative",
+          "scale": {"type": "linear", "domain":[-15, 15]}
+        },
+        "order": {"field": "var_dist"},
+        "opacity":{"value":0.08}
+      }
+    },
     {
       "mark": {"type":"point", "filled": true},
       "encoding": {
