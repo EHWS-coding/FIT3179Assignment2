@@ -39,13 +39,15 @@
 
 
 <h3>
-  Monthly Rainfall in Major Cities
+  Rainfall Patterns over the Years
 </h3>
+<div id="cycle_rain"></div>
 
 <script type="text/javascript">
 
   vegaEmbed('#choropleth_map', "js/visualization.vl.json").then(function(result) { }).catch(console.error);
   vegaEmbed('#monthly_rain', "js/monthlyRainfall.json").then(function(result) { }).catch(console.error);
+  vegaEmbed('#cycle_rain', "js/rainfallCycles.json").then(function(result) { }).catch(console.error);
 </script>
 
 </body>

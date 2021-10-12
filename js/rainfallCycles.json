@@ -1,0 +1,111 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "height": 700,
+  "width": 700,
+  "title": "Rainfall Cycles in Sydney",
+  "data": {
+    "url": "https://raw.githubusercontent.com/EHWS-coding/FIT3179Assignment2/main/data/sydneyTotalMonthlyRainfall.csv"
+  },
+  "transform": [
+    {"filter": "datum.Year >= 2010"},
+    {"calculate": "((datum.Year-2008)+datum.Month/12)", "as": "var_dist"},
+    {"calculate": "sin(datum.var_dist*6.28318530718) * (4+datum.var_dist)", "as": "var_x"},
+    {"calculate": "cos(datum.var_dist*6.28318530718) * (4+datum.var_dist)", "as": "var_y"},
+    {"calculate": "sin(datum.Month/12*6.28318530718) * 15+2", "as": "lab_x"},
+    {"calculate": "cos(datum.Month/12*6.28318530718) * 15-1", "as": "lab_y"}
+  ],
+  "layer": [
+    {
+      "mark": {"type":"point", "filled": true},
+      "encoding": {
+        "x": {
+          "field": "var_x",
+          "type": "quantitative",
+          "title": "",
+          "axis": {"tickCount": 0},
+          "scale": {"type": "linear", "domain":[-15, 15]}
+        },
+        "y": {
+          "field": "var_y",
+          "type": "quantitative",
+          "axis": {"tickCount": 0},
+          "title": "",
+          "scale": {"type": "linear", "domain":[-15, 15]}
+        },
+        "color": {
+          "field": "Rainfall",
+          "type": "quantitative",
+          "legend": {"type": "gradient"},
+          "title": "Monthly Rainfall (mm)",
+          "scale": {"scheme": "blues"}
+        },
+        "size": {
+          "field": "Rainfall",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {"field": "Year", "type": "nominal"},
+          {"field": "Rainfall", "type": "quantitative", "format": ","},
+          {"field": "Month", "type": "quantitative", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "x": {"field": "lab_x", "type": "quantitative"},
+        "y": {"field": "lab_y", "type": "quantitative"},
+        "text": {"field": "Month_Name", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum.Year=='2016' ",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Year", "type": "nominal"},
+          {"field": "Rainfall", "type": "quantitative", "format": ","},
+          {"field": "Month", "type": "quantitative", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "x": {"field": "var_x", "type": "quantitative"},
+        "y": {"field": "var_y", "type": "quantitative"},
+        "text": {"field": "Year", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum.Month=='7' ",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Year", "type": "nominal"},
+          {"field": "Rainfall", "type": "quantitative", "format": ","},
+          {"field": "Month", "type": "quantitative", "format": ","}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
