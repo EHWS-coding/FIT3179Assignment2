@@ -12,14 +12,33 @@
 
 </head>
 <body>
-  
+
+<h1>
+  Rainfall In Australia
+</h1>
+
+<h3>
+  Distribution of rainfall in Australia
+</h3>
+
 <div id="choropleth_map"></div>
+<p>* Gray areas represent missing data</p>
+
+
+<h3>
+  Monthly Rainfall in Major Cities
+</h3>
+<div id="monthly_rain"></div>
+
+
+<h3>
+  Monthly Rainfall in Major Cities
+</h3>
 
 <script type="text/javascript">
 
-  var map_chart = "js/monthlyRainfall.json";
-  vegaEmbed('#choropleth_map', map_chart).then(function(result) {
-  }).catch(console.error);
+  vegaEmbed('#choropleth_map', "js/visualization.vl.json").then(function(result) { }).catch(console.error);
+  vegaEmbed('#monthly_rain', "js/monthlyRainfall.json").then(function(result) { }).catch(console.error);
 </script>
 
 </body>

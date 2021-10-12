@@ -28,7 +28,7 @@
           "field": "rainfall",
           "type": "quantitative",
           "legend": {"type": "gradient"},
-          "scale": {"scheme": "blues"}
+          "scale": {"scheme": "blues", "type": "log"}
         },
         "tooltip": [
           {
