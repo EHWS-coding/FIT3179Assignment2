@@ -7,36 +7,50 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/EHWS-coding/vega_lite/main/data/STE_2016_AUST.json",
-        "format": {"type": "topojson", "feature": "STE_2016_AUST"}
+        "url": "https://raw.githubusercontent.com/EHWS-coding/FIT3179Assignment2/main/data/ausLocalities_with_rain.json",
+        "format": {"type": "topojson", "feature": "lga"}
       },
-      "transform": [
-        {
-          "lookup": "properties.STE_NAME16",
-          "from": {
-            "data": {
-              "url": "https://raw.githubusercontent.com/EHWS-coding/vega_lite/main/data/rainfall_state.csv"
-            },
-            "key": "state",
-            "fields": ["rainfall"]
-          }
-        }
-      ],
-      "mark": {"type": "geoshape"},
+      "mark": {"type": "geoshape", "fill": "#cccccc"},
       "encoding": {
-        "color": {
-          "field": "rainfall",
-          "type": "quantitative",
-          "legend": {"type": "gradient"},
-          "scale": {"scheme": "blues", "type": "log"}
-        },
         "tooltip": [
           {
-            "field": "properties.STE_NAME16",
+            "field": "properties.STATE",
             "type": "nominal",
             "title": "State"
           },
-          {"field": "rainfall", "title": "Rainfall (mm)", "type": "quantitative"}
+          {
+            "field": "properties.ABB_NAME",
+            "type": "nominal",
+            "title": "LGA"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/EHWS-coding/FIT3179Assignment2/main/data/ausLocalities_with_rain.json",
+        "format": {"type": "topojson", "feature": "lga"}
+      },
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "color": {
+          "field": "properties.Average_Rain",
+          "type": "quantitative",
+          "legend": {"type": "gradient"},
+          "scale": {"scheme": "blues"}
+        },
+        "tooltip": [
+          {
+            "field": "properties.STATE",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "properties.ABB_NAME",
+            "type": "nominal",
+            "title": "LGA"
+          },
+          {"field": "properties.Average_Rain", "title": "Rainfall (mm)", "type": "quantitative"}
         ]
       }
     }
