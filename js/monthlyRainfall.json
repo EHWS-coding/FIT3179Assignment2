@@ -1,96 +1,56 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
   "height": 500,
-  "width": 500,
-  "title": "Monthly Rainfall in Major Australian Cities (2016)",
-  "data": {
-    "url": "https://raw.githubusercontent.com/EHWS-coding/vega_lite/main/data/monthly%20rainfall.csv"
-  },
+  "title": "Australian States Average Rainfall in 2017 (mm)",
+  "projection": {"type": "equirectangular"},
   "layer": [
     {
-      "selection": {
-        "location_selection": {
-          "type": "multi",
-          "fields": ["Location"],
-          "bind": "legend"
-        }
+      "data": {
+        "url": "https://raw.githubusercontent.com/EHWS-coding/FIT3179Assignment2/main/data/ausLocalities_with_rain.json",
+        "format": {"type": "topojson", "feature": "lga"}
       },
-      "mark": "line",
+      "mark": {"type": "geoshape", "fill": "#cccccc"},
       "encoding": {
-        "x": {
-          "field": "Month",
-          "type": "quantitative",
-          "title": "Calender Month",
-          "axis": {"tickCount": 12},
-          "scale": {"type": "linear", "domain": [1, 12]}
-        },
-        "y": {
-          "field": "Rainfall",
-          "type": "quantitative",
-          "title": "Monthly Rainfall (mm)",
-          "axis": {"tickCount": 6},
-          "scale": {"type": "linear", "domain": [1, 500]}
-        },
-        "color": {
-          "field": "Location",
-          "type": "nominal",
-          "scale": {
-            "domain": [
-              "Adelaide",
-              "Melbourne",
-              "Sydney",
-              "Darwin",
-              "Brisbane",
-              "Hobart",
-              "Perth"
-            ],
-            "range": [
-              "#504f88",
-              "#55367d",
-              "#487195",
-              "#4fece8",
-              "#3ab3b0",
-              "#320a65",
-              "#4e558a"
-            ]
-          }
-        },
-        "opacity": {
-          "condition": {"selection": "location_selection", "value": 0.8},
-          "value": 0.2
-        },
         "tooltip": [
-          {"field": "Location", "type": "nominal"},
-          {"field": "Rainfall", "type": "quantitative", "format": ","},
-          {"field": "Month", "type": "quantitative", "format": ","}
+          {
+            "field": "properties.STATE",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "properties.ABB_NAME",
+            "type": "nominal",
+            "title": "LGA"
+          }
         ]
       }
     },
     {
-      "mark": {
-        "type": "text",
-        "align": "right",
-        "baseline": "middle",
-        "dx": -12,
-        "fontSize": 11.5,
-        "fontStyle": "italic"
+      "data": {
+        "url": "https://raw.githubusercontent.com/EHWS-coding/FIT3179Assignment2/main/data/ausLocalities_with_rain.json",
+        "format": {"type": "topojson", "feature": "lga"}
       },
+      "mark": {"type": "geoshape"},
       "encoding": {
-        "x": {"field": "Month", "type": "quantitative"},
-        "y": {"field": "Rainfall", "type": "quantitative"},
-        "text": {"field": "Location", "type": "nominal"},
-        "color": {"value": "black"},
-        "opacity": {
-          "condition": {
-            "test": "datum['Month'] == 6 && datum['Location'] != 'Perth' || datum['Month'] == 7 && datum['Location'] == 'Perth' ",
-            "value": 1
-          },
-          "value": 0
+        "color": {
+          "field": "properties.Average_Rain",
+          "type": "quantitative",
+          "legend": {"type": "gradient"},
+          "scale": {"scheme": "blues"}
         },
         "tooltip": [
-          {"field": "Location", "type": "nominal"},
-          {"field": "Rainfall", "type": "quantitative", "format": ","},
-          {"field": "Month", "type": "quantitative", "format": ","}
+          {
+            "field": "properties.STATE",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "properties.ABB_NAME",
+            "type": "nominal",
+            "title": "LGA"
+          },
+          {"field": "properties.Average_Rain", "title": "Rainfall (mm)", "type": "quantitative"}
         ]
       }
     }
