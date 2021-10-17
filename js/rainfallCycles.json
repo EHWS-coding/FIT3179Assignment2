@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "height": 700,
-  "width": 700,
+  "height": 500,
+  "width": 520,
   "title": "Rainfall Cycles in Sydney",
   "data": {
     "url": "https://raw.githubusercontent.com/EHWS-coding/FIT3179Assignment2/main/data/sydneyTotalMonthlyRainfall.csv"
@@ -52,7 +52,7 @@
         "color": {
           "field": "Rainfall",
           "type": "quantitative",
-          "legend": {"type": "gradient"},
+          "legend": {"type": "gradient", "orient": "bottom"},
           "title": "Monthly Rainfall (mm)",
           "scale": {"scheme": "blues"}
         },

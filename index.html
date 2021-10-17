@@ -11,50 +11,119 @@
 
   <style>
     body{
+    }
+    h3 {
+      font-size: larger;
+      font-family: Calibri,sans-serif;
+    }
+    p {
+      font-family: "Calibri Light", sans-serif;
+      padding: 0px 20px;
+    }
+    .title{
+      text-align: center;
+      font-family: "Arial Black",serif;
+    }
+    .secondary-band{
+      background: #F7F8FB;
+
+    }
+    .primary-band{
+      background: #FFffff;
+    }
+    .container{
+
       margin: auto;
       width: 80%;
       max-width: 1000px;
+      padding: 30px 0px;
+    }
+    .horizontal-split{
+      display: flex;
+    }
+    .vertical-centre{
+      display: flex;
+      align-items: center;
     }
   </style>
 
 </head>
 <body>
 
-<h1>
+<h1 class="title">
   Rainfall In Australia
 </h1>
 
-<h3>
-  Distribution of rainfall in Australia
-</h3>
+<div class="secondary-band">
+  <div class="container">
+    <h3>
+      Distribution of rainfall in Australia
+    </h3>
+    <div class="horizontal-split">
+      <div>
+        <div id="choropleth_map"></div>
+        <p>* Gray areas represent missing data</p>
+      </div>
+      <div class="vertical-centre">
+        <p>While a number of Local Government Areas (LGA) have missing data due to difference in rainfall datasource and
+          the LGA map, there are some clear observations that can be made. For example, LGAs further north experience
+          much higher rainfall on average, such as northern Queensland. LGAs at coastal areas also generally receive more
+          rainfall than inland.
+        </p>
 
-<div id="choropleth_map"></div>
-<p>* Gray areas represent missing data</p>
+      </div>
 
-<h3>
-  Rainfall Patterns over the Years
-</h3>
-<div id="cycle_rain"></div>
-<p>The seasonal nature of rainfall is displayed here in this spiral chart, each layer represents a year and each dot is a month.
-  There is a clear wet and dry season present where there is excess rainfall from March to June and much less rainfall from September to November.
-</p>
+    </div>
 
 
+  </div>
 
-<h3>
-  Monthly Rainfall in Major Cities
-</h3>
+</div>
+<div  class="primary-band">
+  <div class="container">
+    <h3>
+      Rainfall Patterns over the Years
+    </h3>
+    <div class="horizontal-split">
+      <div class="vertical-centre">
+        <p>The seasonal nature of rainfall is displayed here in this spiral chart, each layer represents a year and each dot is a month.
+          There is a clear wet and dry season present where there is excess rainfall from March to June and much less rainfall from September to November.
+        </p>
 
-<div id="monthly_rain"></div>
+      </div>
+      <div id="cycle_rain"></div>
 
-<p>This visualisation shows the different seasonal patterns for the major cities in Australia. While Sydney and Brisbane
-  have wet seasons around June, Darwin is the opposite with the most rainfall arriving in December.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<div  class="secondary-band">
+  <div class="container">
+    <h3>
+      Monthly Rainfall in Major Cities
+    </h3>
+    <div id="monthly_rain"></div>
+    <div class="vertical-centre">
+      <p>This visualisation shows the different seasonal patterns for the major cities in Australia. While Sydney and Brisbane
+        have wet seasons around June, Darwin is the opposite with the most rainfall arriving in December.</p>
+
+    </div>
+
+
+    <div class="horizontal-split">
+
+    </div>
+  </div>
+
+</div>
 
 
 <script type="text/javascript">
-  vegaEmbed('#choropleth_map', "js/visualization.vl.json").then(function(result) { }).catch(console.error);
-  vegaEmbed('#monthly_rain', "js/monthlyRainfall.json").then(function(result) { }).catch(console.error);
-  vegaEmbed('#cycle_rain', "js/rainfallCycles.json").then(function(result) { }).catch(console.error);
+  vegaEmbed('#choropleth_map', "js/visualization.vl.json", {"actions": false}).then(function(result) { }).catch(console.error);
+  vegaEmbed('#monthly_rain', "js/monthlyRainfall.json", {"actions": false}).then(function(result) { }).catch(console.error);
+  vegaEmbed('#cycle_rain', "js/rainfallCycles.json", {"actions": false}).then(function(result) { }).catch(console.error);
 </script>
 
 </body>
