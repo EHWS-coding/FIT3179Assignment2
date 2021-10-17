@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 520,
+  "height": {"step": 13},
+  "title": "Average Monthly Rainfall Ranked (mm)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/EHWS-coding/FIT3179Assignment2/main/data/Averaged%20monthly%20rain%20all%20year%20and%20location.csv"},
+  "params": [
+    {
+      "name": "Month_Select",
+      "value": 1,
+      "bind": {
+        "input": "range",
+        "min": 1,
+        "max": 12,
+        "step": 1,
+        "name": "Calender Month: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Month ==  Month_Select"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "bar"},
+      "encoding": {
+        "y":
+        {
+          "field": "Location",
+          "sort": "-x"
+        },
+        "x":
+        {
+          "field": "Rainfall",
+          "type": "quantitative",
+          "title": "Average Monthly Rainfall (mm)"
+        }
+
+      }
+    }
+  ]
+}

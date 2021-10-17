@@ -71,21 +71,36 @@
           much higher rainfall on average, such as northern Queensland. LGAs at coastal areas also generally receive more
           rainfall than inland.
         </p>
-
       </div>
-
     </div>
-
-
   </div>
-
 </div>
-<div  class="primary-band">
+
+<div class="primary-band">
+  <div class="container">
+    <h3>
+      Distribution of rainfall in Australia
+    </h3>
+    <div class="horizontal-split">
+      <div class="vertical-centre">
+        <p>While a number of Local Government Areas (LGA) have missing data due to difference in rainfall datasource and
+          the LGA map, there are some clear observations that can be made. For example, LGAs further north experience
+          much higher rainfall on average, such as northern Queensland. LGAs at coastal areas also generally receive more
+          rainfall than inland.
+        </p>
+        <div id="ranked_rainfall"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div  class="secondary-band">
   <div class="container">
     <h3>
       Rainfall Patterns over the Years
     </h3>
     <div class="horizontal-split">
+      <div id="cycle_rain"></div>
       <div class="vertical-centre">
         <p>The seasonal nature of rainfall is displayed here in this spiral chart, each layer represents a year and each dot is a month.
           There is a clear wet and dry season present where there is excess rainfall from March to June and much less rainfall from September to November.
@@ -94,7 +109,6 @@
         </p>
 
       </div>
-      <div id="cycle_rain"></div>
 
     </div>
   </div>
@@ -102,7 +116,7 @@
 </div>
 
 
-<div  class="secondary-band">
+<div  class="primary-band">
   <div class="container">
     <h3>
       Monthly Rainfall in Major Cities
@@ -126,6 +140,7 @@
 <script type="text/javascript">
   vegaEmbed('#choropleth_map', "js/visualization.vl.json", {"actions": false}).then(function(result) { }).catch(console.error);
   vegaEmbed('#monthly_rain', "js/monthlyRainfall.json", {"actions": false}).then(function(result) { }).catch(console.error);
+  vegaEmbed('#ranked_rainfall', "js/rankedRainfall.json", {"actions": false}).then(function(result) { }).catch(console.error);
   vegaEmbed('#cycle_rain', "js/rainfallCycles.json", {"actions": false}).then(function(result) { }).catch(console.error);
 </script>
 
