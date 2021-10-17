@@ -2,12 +2,34 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "height": 500,
   "width": 520,
-  "title": "Rainfall Cycles in Sydney",
+  "title": "Rainfall Cycles in Major Cities",
   "data": {
-    "url": "https://raw.githubusercontent.com/EHWS-coding/FIT3179Assignment2/main/data/sydneyTotalMonthlyRainfall.csv"
+    "url": "https://raw.githubusercontent.com/EHWS-coding/FIT3179Assignment2/main/data/MultiCityMonthlyRainfall_grouped.csv"
   },
+  "params": [
+    {
+      "name": "City_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Sydney",
+          "Darwin",
+          "Adelaide",
+          "Melbourne"
+        ],
+        "labels":[
+          "Sydney",
+          "Darwin",
+          "Adelaide",
+          "Melbourne"
+        ],
+        "name": "City Selection: "
+      }
+    }
+  ],
   "transform": [
     {"filter": "datum.Year >= 2010"},
+    {"filter": "(City_selection == null && datum.Location == 'Sydney') || datum.Location == City_selection"},
     {"calculate": "((datum.Year-2008)+datum.Month/12)", "as": "var_dist"},
     {"calculate": "sin(datum.var_dist*6.28318530718) * (2+datum.var_dist)*1.4", "as": "var_x"},
     {"calculate": "cos(datum.var_dist*6.28318530718) * (2+datum.var_dist)*1.4", "as": "var_y"},

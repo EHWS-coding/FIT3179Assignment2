@@ -37,7 +37,8 @@
           "field": "properties.Average_Rain",
           "type": "quantitative",
           "legend": {"type": "gradient", "description": "Average Rainfall (mm)", "orient": "bottom"},
-          "scale": {"scheme": "blues"}
+          "scale": {"scheme": "blues"},
+          "title": "Average Monthly Rainfall (mm)"
         },
         "tooltip": [
           {
