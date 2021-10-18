@@ -94,7 +94,7 @@
         "color": {"value": "black"},
         "opacity": {
           "condition": {
-            "test": "datum['Month'] == 6 && (datum['Location'] == 'Sydney' || datum['Location'] == 'Brisbane' || datum['Location'] == 'Melbourne') || datum['Month'] == 7 && datum['Location'] == 'Perth' || datum['Month'] == 12 && datum['Location'] == 'Darwin' || datum['Month'] == 9 && datum['Location'] == 'Adelaide'|| datum['Month'] == 8 && datum['Location'] == 'Hobart' ",
+            "test": "datum['Month'] == 6 && (datum['Location'] == 'Sydney' || datum['Location'] == 'Brisbane' || datum['Location'] == 'Melbourne') || datum['Month'] == 7 && datum['Location'] == 'Perth' || datum['Month'] == 11 && datum['Location'] == 'Darwin' || datum['Month'] == 9 && datum['Location'] == 'Adelaide'|| datum['Month'] == 8 && datum['Location'] == 'Hobart' ",
             "value": 1
           },
           "value": 0
