@@ -21,7 +21,7 @@
           "field": "Month",
           "type": "quantitative",
           "title": "Calender Month",
-          "axis": {"tickCount": 12},
+          "axis": {"tickCount": 12, "grid": false},
           "scale": {"type": "linear", "domain": [1, 12]}
         },
         "y": {
@@ -53,7 +53,7 @@
           "field": "Month",
           "type": "quantitative",
           "title": "Calender Month",
-          "axis": {"tickCount": 12},
+          "axis": {"tickCount": 12, "grid": false},
           "scale": {"type": "linear", "domain": [1, 12]}
         },
         "y": {

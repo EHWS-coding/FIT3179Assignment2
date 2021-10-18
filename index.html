@@ -45,6 +45,10 @@
       display: flex;
       align-items: center;
     }
+    .vega-bind-name{
+      font-family: "Calibri Light", sans-serif;
+      font-weight: bold;
+    }
   </style>
   <title>Rainfall In Australia</title>
 
@@ -79,14 +83,13 @@
 <div class="primary-band">
   <div class="container">
     <h3>
-      Distribution of rainfall in Australia
+      Top locations by Monthly Average Rainfall
     </h3>
     <div class="horizontal-split">
       <div class="vertical-centre">
-        <p>While a number of Local Government Areas (LGA) have missing data due to difference in rainfall datasource and
-          the LGA map, there are some clear observations that can be made. For example, LGAs further north experience
-          much higher rainfall on average, such as northern Queensland. LGAs at coastal areas also generally receive more
-          rainfall than inland.
+        <p>
+          This bar chart displays the locations with the highest average rainfall at each calendar month.
+          <br> You can use the slider to explore the different month of a year.
         </p>
         <div id="ranked_rainfall"></div>
       </div>
@@ -105,7 +108,7 @@
         <p>The seasonal nature of rainfall is displayed here in this spiral chart, each layer represents a year and each dot is a month.
           There is a clear wet and dry season present where there is excess rainfall from March to June and much less rainfall from September to November.
           <br>
-          Use the city selector to view the seasonal patterns of different cities.
+          Use the city selector to view the seasonal patterns of different cities. For example, Darwin almost displays the exact opposite behaviour as Melbourne.
         </p>
 
       </div>
